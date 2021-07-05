@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #181818;
+}
+
+ul {
+  position: relative;
+  display: flex;
+}
+
+li {
+  list-style: none;
+  margin: 0 2rem;
+}
+
+.icon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+    1px 1px 4px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+    inset 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: calc(100% - 5px);
+  height: calc(50% - 2px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+i {
+  font-size: 3rem;
+  color: #555;
+  z-index: 1;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+input[type="checkbox"]:checked ~ .icon::before {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ .icon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: calc(100% - 5px);
+  height: calc(50% - 2px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0px 0px 2px rgba(255, 255, 255, 0.05),
+    inset 4px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input[type="checkbox"]:checked ~ .icon .fas {
+  color: aqua;
+  text-shadow: 0px 0px 20px aqua, 0px 0px 30px aqua;
+  animation: animate 8s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
